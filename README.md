@@ -7,11 +7,11 @@ This is a **source patch release**, with build instructions; it does not contain
 ready-to-install DLL. It is intended for developers and experienced mod testers.
 ArchiveXL remains the work of [psiberx](https://github.com/psiberx/cp2077-archive-xl).
 
-**Known issue in experimental.1:** external `.xl` configs in `archive/pc/mod` are
-not discovered on 2.50 because the bundled SDK defines `ArchiveScope::Mod` as 4,
-while the native game uses 6. The bundled ArchiveXL archive still loads, so the
-basic startup/save checks below do not establish external mod support. A narrowly
-scoped correction is being built and will be published after discovery is tested.
+**Experimental.2 fixes external archive discovery:** the combined SDK patch now
+uses the native 2.50 `ArchiveScope::Mod` value of 6. Experimental.1 used 4 and
+silently skipped external `.xl` configs. Discovery and localization/journal
+processing of Deceptious Quest Core passed locally. See [Archive-discovery.md](Archive-discovery.md)
+for the diagnosis and the limits of that test.
 
 The patched local build passed startup, API/resource smoke checks, repeated reload,
 one existing save load confirmed by the player, and normal shutdown. This is not
@@ -27,9 +27,11 @@ Back up your saves and current mod files before testing a build.
   0f5eba42a4cf3a1161ad3de0b4ed6f1901ec169e and PR 228 layouts at
   b139fcbd51b1c391399662f9fbfc00c5977f7231. These are upstream/community
   contributions, not original work of this port. It also includes the local
-  ITransactionSystem virtual-slot corrections documented in Save-loading-hang.md.
+  ITransactionSystem virtual-slot corrections documented in Save-loading-hang.md
+  and the ArchiveScope::Mod correction documented in Archive-discovery.md.
 - Technical-notes.md: offsets, rationale, test iterations and limitations.
 - Save-loading-hang.md: local diagnosis and native evidence for the transaction SDK fix.
+- Archive-discovery.md: scope correction required to discover external archive configs.
 - Original MIT licenses retained for psiberx/ArchiveXL and RED4ext.SDK.
 
 No game executable, proprietary assets, saves, user logs or credentials are included.
@@ -60,6 +62,8 @@ Install using the original 1.27.5 bundle/scripts, replacing DLL and PDB with mat
 Test only with the targeted 2.50 runtime and compatible RED4ext/SDK layouts.
 The local runtime used RED4ext 1.30.0, redscript 0.5.32, CET 1.38.0, plus locally
 ported Codeware 1.20.6 PR63 and TweakXL 1.11.5 PR22; stock incompatible builds are not equivalent.
+The experimental.2 test also applied `ArchiveScope::Mod = 6` to Codeware's SDK
+because its ArchiveExists API uses this enum. That Codeware build is not included here.
 
 Both patches were checked for reverse application against the working source trees
 and forward application against clean exports of their pinned baseline commits.

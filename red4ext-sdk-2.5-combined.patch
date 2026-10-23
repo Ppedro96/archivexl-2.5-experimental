@@ -409,6 +409,19 @@ index 97d1de8..e493d8e 100644
  };
  RED4EXT_ASSERT_SIZE(IRTTISystem, 0x8);
  
+diff --git a/include/RED4ext/ResourceDepot.hpp b/include/RED4ext/ResourceDepot.hpp
+index 8149768..e31c256 100644
+--- a/include/RED4ext/ResourceDepot.hpp
++++ b/include/RED4ext/ResourceDepot.hpp
+@@ -25,7 +25,7 @@ enum class ArchiveScope : uint32_t
+     Content = 1, // archive\pc\content
+     DLC = 2,     // archive\pc\dlc
+     Patch = 3,   // archive\pc\patch
+-    Mod = 4,     // archive\pc\mod + mods\*\archives
++    Mod = 6,     // 2.5: archive\pc\mod + mods\*\archives (native mod group uses scope 6)
+ };
+ 
+ struct ArchiveGroup
 diff --git a/include/RED4ext/ResourceLoader-inl.hpp b/include/RED4ext/ResourceLoader-inl.hpp
 index 45eec4d..e7c8a0e 100644
 --- a/include/RED4ext/ResourceLoader-inl.hpp

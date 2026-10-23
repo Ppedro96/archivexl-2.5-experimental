@@ -76,6 +76,13 @@ A successful startup does not certify the full mod collection.
    RED4ext unloaded ArchiveXL and the other two plugins and completed shutdown
    without a watchdog timeout in that session. Full gameplay is not certified.
    See Save-loading-hang.md for the native evidence and nearby unchanged slots.
+5. local5 (build port8): corrected ArchiveScope::Mod from 4 to 6 in the SDK.
+   External Deceptious Quest Core .xl discovery, localization merge and journal
+   merge completed. Previous startup/resource checks had covered ArchiveXL's own
+   bundle and missed the external-group filter mismatch. A subsequent combined
+   framework test reached the main menu and shut down normally, unloading all six
+   RED4ext plugins. See Archive-discovery.md and Validation.md; this is not complete
+   quest/gameplay validation.
 
 Build logs archivexl-build-port1 through port4 preserve successful compilation. The final
 address audit has 129 constants and zero missing (archive-port-address-audit.json).
