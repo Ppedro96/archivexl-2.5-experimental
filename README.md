@@ -7,6 +7,12 @@ This is a **source patch release**, with build instructions; it does not contain
 ready-to-install DLL. It is intended for developers and experienced mod testers.
 ArchiveXL remains the work of [psiberx](https://github.com/psiberx/cp2077-archive-xl).
 
+**Known issue in experimental.1:** external `.xl` configs in `archive/pc/mod` are
+not discovered on 2.50 because the bundled SDK defines `ArchiveScope::Mod` as 4,
+while the native game uses 6. The bundled ArchiveXL archive still loads, so the
+basic startup/save checks below do not establish external mod support. A narrowly
+scoped correction is being built and will be published after discovery is tested.
+
 The patched local build passed startup, API/resource smoke checks, repeated reload,
 one existing save load confirmed by the player, and normal shutdown. This is not
 full gameplay or dependent-mod compatibility certification. See [Validation.md](Validation.md).
