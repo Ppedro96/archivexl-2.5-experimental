@@ -13,9 +13,11 @@ silently skipped external `.xl` configs. Discovery and localization/journal
 processing of Deceptious Quest Core passed locally. See [Archive-discovery.md](Archive-discovery.md)
 for the diagnosis and the limits of that test.
 
-The patched local build passed startup, API/resource smoke checks, repeated reload,
-one existing save load confirmed by the player, and normal shutdown. This is not
-full gameplay or dependent-mod compatibility certification. See [Validation.md](Validation.md).
+The earlier local4 build passed startup, API/resource checks, repeated reload,
+one existing save load confirmed by the player, and normal shutdown. Local5 passed
+external discovery, localization/journal processing, main-menu startup and normal
+shutdown; no new save-load check is claimed for its combined framework setup.
+These checks do not certify full gameplay or dependent-mod compatibility. See [Validation.md](Validation.md).
 Back up your saves and current mod files before testing a build.
 
 ## Contents and credits
